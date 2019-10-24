@@ -3,7 +3,7 @@ Assignment 1
 University of Toronto | CSC343 - Managing Databases with SQL 
 
 Completed by:
-Tahir Muhammad  
+Tahir Muhammad   
 Charbel El-Feghali 
 
 Implementation of the Health Car Industry Database. 
