@@ -53,16 +53,16 @@ Province VARCHAR(50),
 PostalCode VARCHAR(6),
 PRIMARY KEY (PersonId, Street, City, Province, PostalCode),
 FOREIGN KEY (PersonId)
-REFERENCES Person(PersonId)
-ON DELETE CASCADE
-ON UPDATE CASCADE
+	REFERENCES Person(PersonId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 
 FOREIGN KEY (HospitalName)
-REFERENCES Hospital(HospitalName)
-ON DELETE CASCADE
-ON UPDATE CASCADE,
+	REFERENCES Hospital(HospitalName)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
 /*If a person dies, there phone number stays i.e So set to null If a persons id is updated, shud reflected the updated id */
 
 CREATE TABLE IF NOT EXISTS TelephoneNumber(
@@ -71,9 +71,9 @@ PersonId VARCHAR(255),
 ContactType VARCHAR(20) NOT NULL,
 PRIMARY KEY (Number),
 FOREIGN KEY(PersonId) 
-REFERENCES Person(PersonId) 
-ON DELETE SET NULL 
-ON UPDATE CASCADE
+	REFERENCES Person(PersonId) 
+	ON DELETE SET NULL 
+	ON UPDATE CASCADE
 );
 
 # Use of Assumption 4a
@@ -103,8 +103,6 @@ CHECK (YearlySalaryCAD>=0),
 CHECK (YearsInPractive>=0),
 PRIMARY KEY (PhysicianId)
 );
-
-
 
 # Use of Assumptions 6 & 7.
 CREATE TABLE IF NOT EXISTS Diagnosis(
@@ -142,13 +140,13 @@ PatientId VARCHAR(255),
 Priority VARCHAR(50),
 PRIMARY KEY (AdmitTime, PatientId),
 FOREIGN KEY (PatientId)
-REFERENCES Patient(PatientId)
-ON UPDATE CASCADE
-ON DELETE NO ACTION,
+	REFERENCES Patient(PatientId)
+	ON UPDATE CASCADE
+	ON DELETE NO ACTION,
 FOREIGN KEY (HospitalName)
-REFERENCES Hospital(HospitalName)
-ON UPDATE CASCADE
-ON DELETE CASCADE
+	REFERENCES Hospital(HospitalName)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 );
 
 #Use of Assumption 15
@@ -158,9 +156,9 @@ HospitalName VARCHAR(255) NOT NULL,
 AnnualBudget INT,
 PRIMARY KEY (HospitalName, DepartmentName),
 FOREIGN KEY (HospitalName)
-REFERENCES Hospital(HospitalName)
-ON DELETE CASCADE
-ON UPDATE CASCADE
+	REFERENCES Hospital(HospitalName)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 
@@ -172,13 +170,13 @@ HospitalName VARCHAR(255),
 DepartmentName VARCHAR(50),
 PRIMARY KEY (MedicalSpecialty, PhysicianId),
 FOREIGN KEY (HospitalName)
-REFERENCES Hospital(HospitalName)
-ON DELETE CASCADE
-ON UPDATE CASCADE,
+	REFERENCES Hospital(HospitalName)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE,
 FOREIGN KEY (PhysicianId)
-REFERENCES Physician(PhysicianId)
-ON DELETE CASCADE
-ON UPDATE CASCADE
+	REFERENCES Physician(PhysicianId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 
@@ -199,13 +197,13 @@ Date Datetime,
 Result VARCHAR(500),
 PRIMARY KEY (Date, PatientId, TestId),
 FOREIGN KEY (PatientId)
-REFERENCES Patient(PatientId)
-ON DELETE NO ACTION
-ON UPDATE CASCADE,
+	REFERENCES Patient(PatientId)
+	ON DELETE NO ACTION
+	ON UPDATE CASCADE,
 FOREIGN KEY (TestID)
-REFERENCES MedicalTest(TestId)
-ON DELETE CASCADE
-ON UPDATE CASCADE
+	REFERENCES MedicalTest(TestId)
+	ON DELETE CASCADE
+	ON UPDATE CASCADE
 );
 
 CREATE TABLE Drug (
@@ -225,16 +223,16 @@ PhysicianId VARCHAR(255),
 DrugCode INT,
 PRIMARY KEY (DrugCode, PatientId, Date, PhysicianId),
 FOREIGN KEY (PhysicianId)
-REFERENCES Physician(PhysicianId)
-ON DELETE NO ACTION
-ON UPDATE CASCADE,
+	REFERENCES Physician(PhysicianId)
+	ON DELETE NO ACTION
+	ON UPDATE CASCADE,
 FOREIGN KEY (PatientId)
-REFERENCES Patient(PatientId)
-ON DELETE NO ACTION
-ON UPDATE CASCADE,
+	REFERENCES Patient(PatientId)
+	ON DELETE NO ACTION
+	ON UPDATE CASCADE,
 FOREIGN KEY (DrugCode)
-REFERENCES Drug(DrugCode)
-ON DELETE NO ACTION
-ON UPDATE CASCADE
+	REFERENCES Drug(DrugCode)
+	ON DELETE NO ACTION
+	ON UPDATE CASCADE
 );
 
